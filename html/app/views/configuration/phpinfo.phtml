@@ -1,0 +1,16 @@
+<?php /** @var matpoppl\SmallMVC\View\ViewData $view */
+
+$view->extends('layout.phtml');
+
+$view->assets->attachLibrary('phpinfo');
+
+ob_start();
+phpinfo();
+$info = ob_get_contents();
+ob_end_clean();
+
+$bodyStart = strpos($info, '>', strpos($info, '<body')) + 1;
+$bodyEnd = strpos($info, '</body>') - $bodyStart;
+
+?>
+<div class="phpinfo"><?= mb_substr($info, $bodyStart, $bodyEnd) ?></div>

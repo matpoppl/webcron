@@ -1,0 +1,52 @@
+<?php /** @var matpoppl\SmallMVC\View\ViewData $view */ ?><!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title><?= $view->escape($view->meta->title()) ?></title>
+
+<script src="//pop-pc.lan:35729/livereload.js"></script>
+
+<link rel="stylesheet" href="//pop-pc.lan:8080/static/css/site.css" />
+
+<?= $view->assets->renderHead() ?>
+
+</head>
+<body class="page">
+
+<div class="page__aside">
+	<div class="page__aside__main">
+<?php if ($nav = $view->nav('main')): ?>
+	<?= $view->nav->renderMenu($nav, ['class' => 'page__menu']) ?>
+<?php endif; ?>
+	</div>
+
+<?php if ($nav = $view->nav('user')): ?>
+	<div class="page__aside__foot">
+	<?= $view->nav->renderMenu($nav, ['class' => 'page__menu']) ?>
+	</div>
+<?php endif; ?>
+</div>
+
+<?php if ($bc = $view->nav()->getBreadcrumbs()): ?>
+	<?= $bc->render(['class' => 'page__breadcrumbs']) ?>
+<?php endif; ?>
+
+<div class="page__main">
+<?php foreach($view->flashMessenger->getTypes() as $type): ?>
+<aside class="alert alert--<?= $type ?>" role="alert">
+	<ul>
+	<?php foreach($view->flashMessenger->getMessages($type) as $msg): ?>
+	<li><?= $msg ?></li>
+    <?php endforeach; ?>
+	</ul>
+</aside>
+<?php endforeach; ?>
+
+<?= $view['_content'] ?>
+</div>
+
+<?= $view->assets->renderFoot() ?>
+
+</body>
+</html>

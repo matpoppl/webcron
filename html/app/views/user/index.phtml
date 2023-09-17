@@ -1,0 +1,45 @@
+<?php
+/** @var matpoppl\SmallMVC\View\ViewData $view */
+
+$view->extends('user/layout.phtml');
+
+$view->assets->attachLibrary('listing-helpers');
+
+?>
+
+<form method="post">
+	<button type="submit" hidden>neutral button must be first</button>
+<table border="1">
+	<caption style="caption-side: bottom;">
+		<div style="display:flex">
+		<select name="action" class="js-listing-formaction-switch">
+			<option value=""><?= $view->translate('-- Modify selected --') ?></option>
+			<option value="delete" data-formmethod="post
+			" data-formaction="<?= $view->route('users/del') ?>"><?= $view->translate('Delete') ?></option>
+		</select>
+		<button type="submit" class="btn btn--primary"><?= $view->translate('Modify selected') ?></button>
+		</div>
+	</caption>
+	<thead>
+		<tr>
+			<th><input type="checkbox" class="js-listing-toggle-column" /></th>
+			<th><?= $view->translate('Username') ?></th>
+			<th><?= $view->translate('Modify') ?></th>
+		</tr>
+	</thead>
+	<tbody>
+<?php foreach($view['rows'] as $r): ?>
+		<tr>
+			<th><input type="checkbox" name="id[]" value="<?= $r['id'] ?>" /></th>
+			<td><a href="<?= $view->route('user/edit', ['id' => $r['id'] ]) ?>"><?= $r['username'] ?></a></td>
+			<td>
+				<a href="<?= $view->route('user/edit', ['id' => $r['id'] ]) ?>">[edit]</a>
+				&mdash;
+				<button type="submit" name="id[]" value="<?= $r['id'] ?>" formaction="<?= $view->route('users/del') ?>">delete</button>
+			</td>
+		</tr>
+<?php endforeach; ?>
+	</tbody>
+</table>
+<input type="hidden" name="csrf" value="<?= $view['csrfHash'] ?>" />
+</form>

@@ -1,0 +1,13 @@
+
+a, address,
+table,
+input, button, select, textarea {
+	font: inherit;
+}
+
+a {
+	color: inherit;
+}
+
+button, label { cursor: pointer; }
+label { user-select: none; }

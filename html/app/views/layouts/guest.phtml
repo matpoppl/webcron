@@ -1,0 +1,31 @@
+<?php /** @var matpoppl\SmallMVC\View\ViewData $view */ ?><!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title><?= $view->escape($view->meta->title()) ?></title>
+
+<!-- build:remove -->
+<script src="//pop-pc.lan:35729/livereload.js"></script>
+<!-- endbuild -->
+
+<!-- build:css /static/css/guest.min.css -->
+<link rel="stylesheet" href="//pop-pc.lan:8080/static/css/guest.css" />
+<!-- endbuild -->
+
+</head>
+<body>
+
+<div class="guest">
+	<div class="guest__main">
+<?= $view['_content'] ?>
+
+<div class="guest__links">
+	<a href="<?= $view->route('guest/signin') ?>"><?= $view->translate('Sign in') ?></a>
+	<a href="<?= $view->route('guest/reset') ?>"><?= $view->translate('Did You forget Your password ?') ?></a>
+</div>
+	</div>
+</div>
+
+</body>
+</html>

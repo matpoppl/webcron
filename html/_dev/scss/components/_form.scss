@@ -1,0 +1,60 @@
+
+.form {
+	label { cursor: pointer; }
+
+	@each $name, $colors in $stateColors {		
+		.form__msg--#{$name} {
+			border-color: map-get($colors, bg);
+			color: map-get($colors, bg);
+			background: mix(map-get($colors, bg), map-get($colors, fg), 5%);
+		}
+	};
+
+	.form__msg--error {
+		@extend .form__msg--danger;
+	}
+	
+	.checkbox-wrap {
+		input {
+			border: 0;
+			outline: 0;
+			box-shadow: none;
+		}
+		
+		label {
+			&::before {
+				content: '';
+				position: absolute;
+				width: 1em;
+				height: 1em;
+				top: 0;
+				left: 0;
+				background: #fff;
+				border: 1px inset $c-border;
+				border-radius: 0.25em;
+				line-height: 1;
+				text-align: center;
+				
+			}
+		}
+		
+		:focus + label::before {
+			box-shadow: 1px 1px 1px currentColor;
+		}
+		
+		:checked + label::before {
+			content: '\2A2F';
+			border-color: currentColor;
+			color: #000;
+		}
+	}
+}
+
+.form--edit {
+	.form__row--required {
+		> label::before { content:'*'; }
+	}
+	.form__row--error {
+		> label { color: $c-danger-bg; }
+	}
+}

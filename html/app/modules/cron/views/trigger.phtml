@@ -1,0 +1,26 @@
+<?php
+/** @see \App\Controller\TaskController::triggerAction() */
+
+/** @var matpoppl\SmallMVC\View\ViewData $view */
+/** @var matpoppl\Cron\Entity\TaskEntity $taskEntity */
+
+$taskEntity = $view['taskEntity'];
+
+$view->extends('modules:cron/views/layout.phtml');
+?>
+
+<?php $block = $view->block('top-links') ?>
+<ul class="ls-btn">
+	<li>
+		<a href="<?= $view->route('task/trigger/add', [
+		    'task_id' => $taskEntity->id,
+		]) ?>" class="btn btn--primary"><?= $view->translate('Add trigger') ?></a>
+	</li>
+</ul>
+<?php $block->end() ?>
+
+<fieldset>
+	<legend><?= $taskEntity->name ?></legend>
+
+	<?= $view['form']->renderForm() ?>
+</fieldset>

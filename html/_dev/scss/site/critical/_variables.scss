@@ -1,0 +1,8 @@
+
+:root {
+	
+	@each $name, $opts in $stateColors {
+		--c-#{$name}-bg: #{map-get($opts, bg)};
+		--c-#{$name}-fg: #{map-get($opts, fg)};
+	}
+}

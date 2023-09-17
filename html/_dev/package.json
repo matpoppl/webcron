@@ -1,0 +1,27 @@
+{
+  "name": "webcron",
+  "version": "1.0.0",
+  "description": "webcron",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "type": "commonjs",
+  "license": "ISC",
+  "browserslist": [
+    "Firefox ESR"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "autoprefixer": "^10.4.0",
+    "csstree-validator": "^2.0.1",
+    "glob": "^7.2.0",
+    "material-design-icons": "^3.0.1",
+    "postcss": "^8.4.4",
+    "postcss-load-config": "^3.1.0",
+    "qunit": "^2.19.1",
+    "rollup": "^2.63.0",
+    "sass": "^1.44.0",
+    "tiny-lr": "^2.0.0"
+  }
+}

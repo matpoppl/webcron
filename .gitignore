@@ -1,0 +1,12 @@
+/.settings/
+/_tmp/
+/nbproject/
+/html/_dev/node_modules/
+/html/app/var/*/*
+/html/app/vendor/
+/.buildpath
+/.project
+/*.cache
+/*.log
+/.php-cs-fixer.php
+/phpunit.xml

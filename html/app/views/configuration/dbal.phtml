@@ -1,0 +1,16 @@
+<?php /** @var matpoppl\SmallMVC\View\ViewData $view */
+
+$view->extends('layout.phtml');
+
+
+/** @var \matpoppl\DBAL\DBALManager $dbal */
+$dbal = $view['dbal'];
+
+/** @var \matpoppl\DBAL\SQLite\SQLiteDriver $driver */
+$driver = $dbal->getDriver();
+?>
+
+<?php foreach($dbal->listTableNames() as $tableName): ?>
+<h2><?= $view->escape($tableName) ?></h2>
+<pre><?= $driver->describeTable($tableName) ?></pre>
+<?php endforeach; ?>

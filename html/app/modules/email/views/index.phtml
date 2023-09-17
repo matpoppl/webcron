@@ -1,0 +1,42 @@
+<?php
+
+/** @var matpoppl\SmallMVC\View\ViewData $view */
+/** @var matpoppl\Email\Entity\TemplateEntity $tpl */
+
+$view->extends('layout.phtml');
+
+?>
+
+<ul class="ls-btn">
+	<li><a href="<?= $view->route('email/template', ['id' => 0]) ?>" class="btn btn--primary"><?= $view->translate('Add template') ?></a></li>
+	<li><a href="<?= $view->route('email/transport/add') ?>" class="btn btn--primary"><?= $view->translate('Add email transport') ?></a></li>
+</ul>
+
+<?php if(isset($view['form'])): ?>
+<?= $view['form']->renderForm() ?>
+<?php endif; ?>
+
+<?php if(isset($view['templates'])): ?>
+<table>
+<thead>
+<tr>
+	<th><?= $view->translate('Edit') ?></th>
+	<th><?= $view->translate('Render') ?></th>
+	<th><?= $view->translate('Send') ?></th>
+	<th><?= $view->translate('Template SID') ?></th>
+	<th><?= $view->translate('Name') ?></th>
+</tr>
+</thead>
+<tbody>
+<?php foreach($view['templates'] as $tpl): ?>
+<tr>
+	<td><a href="<?= $view->route('email/template', ['id' => $tpl->id ]) ?>">[edit]</a></td>
+	<td><a href="<?= $view->route('email/template/render', ['id' => $tpl->id ]) ?>">[render]</a></td>
+	<td><a href="<?= $view->route('email/template/send', ['id' => $tpl->id ]) ?>">[send]</a></td>
+	<td><?= $tpl->sid; ?></td>
+	<th><?= $tpl->name ?></th>
+</tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+<?php endif; ?>

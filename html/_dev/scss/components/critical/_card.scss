@@ -1,0 +1,35 @@
+
+.ls-card {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	gap: 2em;
+	
+	.card__body { width: calc-size(300); }
+}
+
+.card {
+	border: 1px outset $c-border;
+	border-radius: 0.25em;
+}
+
+.card__head,
+.card__body,
+.card__foot {
+	padding: 0.5em 1em;
+	display: block;
+}
+
+.card__head {
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+}
+
+.card__body {
+	background: #fff;
+}
+
+.card__foot {
+	background: #eee;
+	border-top: 1px solid #ddd;
+}

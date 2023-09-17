@@ -1,0 +1,66 @@
+<?php
+/** @see \App\Controller\TaskController::triggersAction() */
+
+/** @var matpoppl\SmallMVC\View\ViewData $view */
+/** @var matpoppl\Cron\Entity\TaskEntity $taskEntity */
+
+$taskEntity = $view['taskEntity'];
+
+$view->extends('modules:cron/views/layout.phtml');
+?>
+
+<?php $block = $view->block('top-links') ?>
+<ul class="ls-btn">
+	<li>
+		<a href="<?= $view->route('task/trigger/add', [
+		    'task_id' => $taskEntity->id,
+		]) ?>" class="btn btn--primary"><?= $view->translate('Add trigger') ?></a>
+	</li>
+</ul>
+<?php $block->end() ?>
+
+<form method="post">
+	<button type="submit" hidden>neutral button must be first</button>
+<table border="1">
+	<caption style="caption-side: bottom;">
+		<div style="display:grid;grid-template-columns: 1fr max-content">
+		<select name="action">
+			<option value=""><?= $view->translate('-- Modify selected --') ?></option>
+			<option value="delete"><?= $view->translate('Delete') ?></option>
+		</select>
+		<button type="submit" class="btn btn--primary"><?= $view->translate('Modify selected') ?></button>
+		</div>
+	</caption>
+	<thead>
+		<tr>
+			<th><label for="task-trigger-cb-toggle"><input type="checkbox" id="task-trigger-cb-toggle" /></label></th>
+			<th><?= $view->translate('repeat type') ?></th>
+			<th><?= $view->translate('repeat every') ?></th>
+			<th><?= $view->translate('weekdays') ?></th>
+			<th><?= $view->translate('from') ?></th>
+			<th><?= $view->translate('to') ?></th>
+			<th><?= $view->translate('next') ?></th>
+			<th><?= $view->translate('actions') ?></th>
+		</tr>
+	</thead>
+	<tbody>
+<?php foreach($view['rows'] as $r): ?>
+		<tr>
+			<th><label for="task-trigger-cb-<?= $r['id'] ?>"><input type="checkbox" id="task-trigger-cb-<?= $r['id'] ?>" name="id[]" value="<?= $r['id'] ?>" /></label></th>
+			<td><?= $r['repeat_type'] ?></td>
+			<td><?= $r['repeat_every'] ?></td>
+			<td><?= $r['weekdays'] ?></td>
+			<td><?= $r['from'] ?></td>
+			<td><?= $r['to'] ?></td>
+			<td><?= $r['next'] ?></td>
+			<td>
+				<a href="<?= $view->route('task/trigger', [ 'task_id' => $r['task_id'], 'id' => $r['id'] ]) ?>">[edit]</a>
+				&mdash;
+				<button type="submit" name="id[]" value="<?= $r['id'] ?>" formaction="<?= $view->route('task/trigger/del') ?>">delete</button>
+			</td>
+		</tr>
+<?php endforeach; ?>
+	</tbody>
+</table>
+<input type="hidden" name="csrf" value="<?= $view['csrfHash'] ?>" />
+</form>

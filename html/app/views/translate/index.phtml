@@ -1,0 +1,28 @@
+<?php $view->extends('layout.phtml') ?>
+
+<h1><?= $view->translate('Translations') ?></h1>
+
+<?= $view['form']->renderForm() ?>
+
+<form method="post">
+	<button type="submit" hidden>neutral button must be first</button>
+<table border="1">
+	<thead>
+		<tr>
+			<th><?= $view->translate('Domain') ?></th>
+			<th><?= $view->translate('From') ?></th>
+			<th>pl_PL</th>
+		</tr>
+	</thead>
+	<tbody>
+<?php foreach($view['rows'] as $r): ?>
+		<tr>
+			<td><?= $r['domain'] ?></td>
+			<td><?= $r['msgid'] ?></td>
+			<td><?= $r['value'] ?></td>
+		</tr>
+<?php endforeach; ?>
+	</tbody>
+</table>
+<input type="hidden" name="csrf" value="@TODO@HASH@" />
+</form>

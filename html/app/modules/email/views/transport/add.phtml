@@ -1,0 +1,17 @@
+<?php
+
+/** @var matpoppl\SmallMVC\View\ViewData $view */
+
+$view->extends('layout.phtml');
+
+?>
+
+<ul class="ls-card">
+<?php foreach($view['drivers'] as $driver): ?>
+	<li class="card">
+		<div class="card__head"><b><?= $driver['title'] ?></b></div>
+		<div class="card__body"><?= $driver['desc'] ?></div>
+		<div class="card__foot"><a href="<?= $view->route('email/transport/add/driver', ['driver' => $driver['sid'] ]) ?>" class="btn btn--primary"><?= $view->t('select this') ?></a></div>
+	</li>
+<?php endforeach; ?>
+</ul>

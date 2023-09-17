@@ -1,0 +1,17 @@
+
+.btn {
+	display: inline-block;
+	line-height: 1;
+	padding: 0.5em;
+	border: 1px outset transparent;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.ls-btn {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1em;
+}

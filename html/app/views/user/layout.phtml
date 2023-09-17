@@ -1,0 +1,9 @@
+<?php /** @var matpoppl\SmallMVC\View\ViewData $view */ $view->extends('layout.phtml') ?>
+
+<ul class="ls-btn">
+	<li>
+		<a href="<?= $view->route('user/add') ?>" class="btn btn--primary"><?= $view->translate('Add user') ?></a>
+	</li>
+</ul>
+
+<?= $view['_content'] ?>

@@ -1,0 +1,16 @@
+<?php
+
+use matpoppl\SmallMVC\Utils\Debugger;
+
+$view->extends('layout.phtml') ?>
+
+<h1><?= $this['title'] ?></h1>
+<div class="alert alert--danger"><?= $this['message'] ?></div>
+
+<?php if($ex = $this->get('exception')): $exClass = get_class($ex); ?>
+<pre class="debugger"><?= "[{$exClass}] {$ex->getCode()}# {$ex->getMessage()}\n{$ex->getFile()}:{$ex->getLine()}\n{$ex->getTraceAsString()}" ?></pre>
+<?php endif; ?>
+
+<?php if($ex = $this->get('exception')): $exClass = get_class($ex); ?>
+<pre class="debugger"><?= Debugger::getInstance()->dumpLogs() ?></pre>
+<?php endif; ?>

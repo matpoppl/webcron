@@ -1,0 +1,11 @@
+<?php /** @var matpoppl\SmallMVC\View\ViewData $view */ $view->extends('modules:cron/views/layout.phtml') ?>
+
+<ul class="ls-card">
+<?php foreach ($view['types'] as $id => $opts) : ?>
+	<li class="card">
+		<div class="card__head"><b><?= $opts['title'] ?></b></div>
+		<div class="card__body"><?= $opts['desc'] ?></div>
+		<div class="card__foot"><a href="<?= $view->route('task/add', ['type' => $id]) ?>" class="btn btn--primary"><?= $view->t('Select') ?></a></div>
+	</li>
+<?php endforeach; ?>
+</ul>

@@ -1,0 +1,44 @@
+
+$white: #fff;
+$black: #000;
+$red: #E01541;
+$green: #1FAD2B;
+$blue: #003D66;
+$yellow: #FFD23F;
+$orange: #EB820A;
+
+$grey-darkest: #151513;
+$grey-dark: #363732;
+$grey: #aaa;
+$grey-light: #C0C9D8;
+
+$c-bg: $grey-light;
+
+$c-text: $grey-darkest;
+$c-primary-fg: $white;
+$c-primary-bg: $blue;
+$c-secondary-fg: $white;
+$c-secondary-bg: $orange;
+
+$c-success-bg: $green;
+$c-success-fg: $white;
+$c-danger-bg: $red;
+$c-danger-fg: $white;
+$c-warning-bg: $orange;
+$c-warning-fg: $white;
+$c-info-bg: $blue;
+$c-info-fg: $white;
+
+$c-light: $grey-light;
+$c-dark: $grey-dark;
+
+$c-border: $grey;
+
+$stateColors: (
+	primary: (fg: $c-primary-fg, bg: $c-primary-bg),
+	secondary: (fg: $c-secondary-fg, bg: $c-secondary-bg),
+	success: (fg: $c-success-fg, bg: $c-success-bg),
+	danger: (fg: $c-danger-fg, bg: $c-danger-bg),
+	warning: (fg: $c-warning-fg, bg: $c-warning-bg),
+	info: (fg: $c-info-fg, bg: $c-info-bg),
+);

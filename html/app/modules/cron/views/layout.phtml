@@ -1,0 +1,11 @@
+<?php /** @var matpoppl\SmallMVC\View\ViewData $view */ $view->extends('layout.phtml') ?>
+
+<?php $block = $view->block('top-links') ?>
+<ul class="ls-btn">
+	<li>
+		<a href="<?= $view->route('task/add') ?>" class="btn btn--primary"><?= $view->translate('Add task') ?></a>
+	</li>
+</ul>
+<?= $block->end() ?>
+
+<?= $view['_content'] ?>

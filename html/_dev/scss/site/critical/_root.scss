@@ -1,0 +1,97 @@
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: calc-size($f-base, 100%, 16);
+	overflow-y: scroll;
+	scrollbar-width: thin;
+	scrollbar-color: $grey $grey-darkest;
+}
+
+body {
+	font: 400 1em/#{$lh-base} $f-sans;
+	background: $c-bg;
+	color: $c-text;
+}
+
+.page {
+	min-height: 100vh;
+	position: relative;
+	margin-right: 10em;
+}
+
+.page__main,
+.page__aside {
+	overflow: auto;
+}
+
+.page__aside {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 10em;
+	height: 100vh;
+	
+	background: #333;
+	color: #aaa;
+	padding: 0 0.5em;
+	
+	display: grid;
+	grid-template-rows: 1fr auto;
+	box-shadow: -0.25em 0 1em rgba(0, 0, 0, 0.5);
+}
+
+.page__main {
+	padding: 0 1em;
+}
+
+.page__menu {
+	list-style: none;
+	padding: 0;
+	
+	li:not(.on-path):not([aria-current="page"]) > ul { display: none; }
+	
+	li[aria-current="page"] > a { color: #fff; }
+}
+
+.page__menu > li {
+	> a {
+		line-height: 1;
+		display: block;
+		padding: 0.25em 0.5em;
+		
+		margin: 0.25em 0;
+		border: 1px solid fade-out(#fff, 0.8);
+		border-radius: 0.25em;
+		
+		background: fade-out(#fff, 0.95);
+		
+		text-decoration: none;
+		
+		&:hover {
+			background: fade-out(#fff, 0.9);
+		}
+	}
+}
+
+.page__breadcrumbs {
+	grid-area: breadcrumbs;
+	
+	background: rgba(0, 0, 0, 0.25);
+	list-style: none;
+
+	display: flex;
+	gap: 0.5em;
+	margin: 0;
+	padding: 0.5em 1em;
+	line-height: 1;
+	
+	li:not(:last-child)::after {
+		content: '/';
+	}
+	
+	li { display: flex; }
+}

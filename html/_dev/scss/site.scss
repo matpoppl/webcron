@@ -1,0 +1,26 @@
+
+@import 'config';
+
+@import 'site/critical/variables'
+	,'site/critical/reset'
+	,'site/critical/root'
+	,'site/critical/header';
+
+@import 'components/critical/buttons'
+	,'components/critical/alerts'
+	,'components/critical/card'
+	,'components/critical/form';
+
+@import 'components/buttons'
+	,'components/alerts'
+	,'components/card'
+	,'components/form';
+
+svg.ico {
+	fill: currentColor;
+	width: 1.3em;
+	height: 1.3em;
+	display: inline-block;
+	
+	outline: 1px solid red;
+}

@@ -1,0 +1,60 @@
+
+@import 'config';
+
+@import 'site/critical/variables'
+	,'site/critical/reset'
+	,'site/critical/header';
+
+@import 'components/critical/buttons'
+	,'components/critical/alerts'
+	,'components/critical/card'
+	,'components/critical/form';
+
+@import 'components/buttons'
+	,'components/alerts'
+	,'components/card'
+	,'components/form';
+
+html, body {
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 110%;
+}
+
+body {
+	font: 400 1em/1.4 $f-sans;
+	display: grid;
+	place-items: center;
+	
+	background: #030A11;
+	color: #D3E7EE;
+}
+
+.form {
+	background: #0A2239;
+	
+	padding: 1em;
+	border-radius: 0.5em;
+}
+
+.form__row--imagecaptcha {
+	button {
+		background: none;
+		font: 100 0/0 serif;
+		padding: 0;
+		border: 1px outset #000;
+	}
+}
+
+.form__row { margin: 0 0 1em; }
+
+.form--signin {
+	input,
+	label {
+		display: block;
+	}
+}

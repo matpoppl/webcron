@@ -1,0 +1,16 @@
+<?php /** @var \matpoppl\SmallMVC\View\ViewData $view */ $view->extends('modules:cron/views/layout.phtml') ?>
+
+<?php $block = $view->block('top-links') ?><?php $block->end() ?>
+
+<?php $view->assets->attachLibrary('task/run') ?>
+
+
+<button id="btn-start">start</button>
+<button id="btn-stop">stop</button>
+
+<form method="post">
+	<textarea name="query"><?= $view->escape($view['taskEntity']->getParam('query')) ?></textarea>
+	<button type="submit">submit</button>
+</form>
+
+<ul id="results"></ul>

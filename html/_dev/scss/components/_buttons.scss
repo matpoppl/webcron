@@ -1,0 +1,29 @@
+
+.btn {
+	text-decoration: none;
+	border-radius: 0.25em;
+	cursor: pointer;
+	outline: none;
+	
+	transition: transform 0.3s;
+	
+	&:not(:disabled) {
+		&:focus,
+		&:hover {
+			box-shadow: 1px 1px 1px $c-text;
+		}
+		
+		&:active {
+			background-image: none;
+		}
+	}
+}
+
+@each $name, $colors in $stateColors {
+.btn--#{$name}:not(:disabled) {
+	$tmp: map-get($colors, bg);
+	background: $tmp linear-gradient(lighten($tmp, 15%), $tmp);
+	color: map-get($colors, fg);
+	border-color: darken($tmp, 15%);
+}
+};

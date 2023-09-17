@@ -1,0 +1,6 @@
+@use 'sass:math';
+
+@function calc-size($size, $unit: 1em, $base: $f-base)
+{
+	@return math.div($size, $base) * $unit;
+}

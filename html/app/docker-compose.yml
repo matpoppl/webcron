@@ -1,0 +1,9 @@
+version: '3.1'
+
+services:
+  build-composer:
+    build:
+      context: .
+    volumes:
+      - ./:/var/www/html/app
+    command: composer run setup

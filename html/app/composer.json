@@ -45,14 +45,13 @@
 	"autoload-dev" : {
 		"psr-4" : {
 			"App\\" : "tests/src",
-			"matpoppl\\ComposerScript\\" : "../../src/Composer",
 			"matpoppl\\SmallMVC\\" : "libs/small-mvc/tests/src",
 			"matpoppl\\Hydrator\\" : "libs/hydrator/tests/src",
 			"matpoppl\\EntityManager\\" : "libs/entity-manager/tests/src"
 		}
 	},
 	"scripts" : {
-		"install-sqlite" : "matpoppl\\ComposerScript\\SqliteScript::install",
+		"install-sqlite" : "App\\ComposerScript\\SqliteScript::install",
 		"setup" : "@install-sqlite"
 	}
 }

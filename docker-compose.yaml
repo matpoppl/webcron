@@ -1,0 +1,51 @@
+version: '3.1'
+
+services:
+  www:
+    image: nginx:stable
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./html:/var/www/html:ro
+    ports:
+      - 8080:80
+    networks:
+      - backend
+    depends_on:
+      - php-composer
+      - php-fpm
+      - node-frontend
+
+  php-fpm:
+    build: .
+    networks:
+      - backend
+    volumes:
+      - ./html:/var/www/html
+
+  php-composer:
+    build: ./html/app
+    volumes:
+      - ./html/app:/var/www/html/app
+
+  node-frontend:
+    build: ./html/_dev
+    networks:
+      - frontend
+    ports:
+      - 8081:8081
+      - 35729:35729
+    environment: 
+      - LIVERELOAD_HOST=0.0.0.0
+      - LIVERELOAD_PORT=35729
+      - DEV_ASSETS_HOST=0.0.0.0
+      - DEV_ASSETS_PORT=8081
+    volumes:
+      - ./html/_dev:/var/www/html/_dev
+
+networks:
+  backend:
+    driver: bridge
+  frontend:
+    driver: bridge
+  nonet:
+    driver: none

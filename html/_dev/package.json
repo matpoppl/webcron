@@ -11,17 +11,17 @@
     "Firefox ESR"
   ],
   "devDependencies": {
-    "@babel/core": "^7.16.7",
-    "@babel/preset-env": "^7.16.7",
-    "autoprefixer": "^10.4.0",
-    "csstree-validator": "^2.0.1",
-    "glob": "^7.2.0",
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.22.20",
+    "autoprefixer": "^10.4.16",
+    "csstree-validator": "^3.0.0",
+    "glob": "^10.3.7",
     "material-design-icons": "^3.0.1",
-    "postcss": "^8.4.4",
-    "postcss-load-config": "^3.1.0",
-    "qunit": "^2.19.1",
-    "rollup": "^2.63.0",
-    "sass": "^1.44.0",
+    "postcss": "^8.4.30",
+    "postcss-load-config": "^4.0.1",
+    "qunit": "^2.20.0",
+    "rollup": "^3.29.3",
+    "sass": "^1.68.0",
     "tiny-lr": "^2.0.0"
   }
 }

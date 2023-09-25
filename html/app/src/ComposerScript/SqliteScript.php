@@ -1,6 +1,6 @@
 <?php
 
-namespace matpoppl\ComposerScript;
+namespace App\ComposerScript;
 
 use Composer\Script\Event;
 use App\Application;
@@ -46,7 +46,9 @@ class SqliteScript
     public static function install(Event $evt)
     {
         $self = new static($evt);
-        $self->createDatabase($self->getDBALDriver(), __DIR__ . '/../../data/sqlite');
+		
+        $appRoot = dirname($evt->getComposer()->getConfig()->getConfigSource()->getName());
+        $self->createDatabase($self->getDBALDriver(), $appRoot . '/../../data/sqlite');
         
         $tables = $self->getDBALDriver()->listTableNames();
         

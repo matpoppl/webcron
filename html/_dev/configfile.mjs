@@ -1,7 +1,7 @@
 import { env } from 'process';
 import { join } from 'path';
 import gulp from './libs/taskrunner2/index.mjs';
-import sass from 'sass';
+import * as sass from 'sass';
 import postcss from 'postcss';
 import postcssrc from 'postcss-load-config';
 import { rollup } from 'rollup';
@@ -97,18 +97,26 @@ function devJS()
 
 function livereloadTask(cb)
 {
+  const { LIVERELOAD_HOST, LIVERELOAD_PORT, DEV_ASSETS_HOST, DEV_ASSETS_PORT } = {
+    LIVERELOAD_HOST: '127.0.0.1',
+    LIVERELOAD_PORT: 35729,
+    DEV_ASSETS_HOST: '127.0.0.1',
+    DEV_ASSETS_PORT: 8080,
+	...process.env
+  };
+
   livereload.listen({
-    port: 35729,
-    host: 'pop-pc.lan',
-    cert: fread(join(env.PATH_CERTS, 'localhost-cert.pem')),
-    key: fread(join(env.PATH_CERTS, 'localhost-key.pem')),
+    host: LIVERELOAD_HOST,
+    port: LIVERELOAD_PORT,
+    // cert: fread(join(env.PATH_CERTS, 'localhost-cert.pem')),
+    // key: fread(join(env.PATH_CERTS, 'localhost-key.pem')),
   });
 
   proxy.listen({
-    port: 8080,
-    host: 'pop-pc.lan',
-    cert: fread(join(env.PATH_CERTS, 'localhost-cert.pem')),
-    key: fread(join(env.PATH_CERTS, 'localhost-key.pem')),
+    host: DEV_ASSETS_HOST,
+    port: DEV_ASSETS_PORT,
+    // cert: fread(join(env.PATH_CERTS, 'localhost-cert.pem')),
+    // key: fread(join(env.PATH_CERTS, 'localhost-key.pem')),
   });
   
   cb();

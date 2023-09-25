@@ -6,7 +6,7 @@ Learning design patterns from Zend Framework, Laminas, Symfony by implementing C
 
 - Run in 'html/app' 
    - `composer intall`
-   - `composer setup`
+   - `composer run-script setup`
 - Point webserver document root to 'html/'
 - Manually import to sqlite database 'html/app/modules/sql/*.sql'
 
